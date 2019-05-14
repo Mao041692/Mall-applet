@@ -1,0 +1,70 @@
+/**index.wxss**/
+.row{
+  margin-top: 20rpx;
+  overflow: hidden;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #ccc;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  color: #777;
+  background: #fff;
+}
+.info-input{
+  height: 80rpx;
+  margin-left: 50rpx;
+  color: #777;
+  font-size:26rpx;
+    float: left;
+}
+.info-input1{
+  height: 80rpx;
+  margin-left: 50rpx;
+  color: #777;
+  font-size:26rpx;
+    float: left;
+    width: 420rpx;
+}
+.button{
+  width: 176rpx;
+  height:60rpx;
+  line-height:60rpx;  
+  font-size: 28rpx;
+  background: #33FF99;
+  float: left;
+  margin-left: 10rpx;
+  margin-top: 2rpx;
+  color: #FFFFFF;
+}
+.submit{
+  margin: 20rpx;
+  background: #00CCFF;
+   color: #FFFFFF;
+}
+.success{
+  background: #ffffff;
+}
+.cheer{
+  text-align: center;
+  line-height: 400rpx;
+  font-size: 60rpx;
+  position: relative;
+}
+/* .return{
+  margin: 20rpx;
+} */
+.identityCard_front{
+  height: 200rpx;
+  padding: 20rpx;
+  margin: 20rpx;
+  border: 1rpx solid rgb(180, 180, 180);
+}
+.identityCard_recite{
+  height: 200rpx;
+  padding: 20rpx;
+  margin: 20rpx;
+  border: 1rpx solid rgb(180, 180, 180);
+}
+.imgs{
+  padding-left: 40rpx;
+  font-size: 26rpx;
+}

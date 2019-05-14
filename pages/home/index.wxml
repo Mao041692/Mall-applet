@@ -1,0 +1,145 @@
+<!--home.wxml-->
+<view>
+  <!--  搜索框  -->
+  <view class='search'>
+    <image class="" src='../../icon/sousuo.jpg' bindtap='query'></image>
+    <input type='text' placeholder='输入你想要的内容' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
+  </view>
+  <view>
+    <!--导航栏-->
+  </view>
+  <view>
+    <!-- banner start-->
+    <!-- <swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" >
+  <swiper-item>
+  <view class='ceng'>
+      <image src="{{mdc_videofenmian}}" hidden="{{xiaoshi}}"/>
+      <view class='btn'><image src="../../icon/lunbo1.jpg" hidden="{{xiaoshi}}" bindtap="bindPlay" /></view>
+      <video src="{{mdc_video}}" objectFit="cover" bindtouchmove="mdc_move1" controls id="mdcVideo" style="width:100%;height:100% " hidden="{{mdc_show}}" >
+        <cover-view class='mdc_return' bindtap='returnquanping'>退出全屏</cover-view>
+      </video>
+  </view>
+    </swiper-item>
+  <block wx:for="{{imgUrls}} wx:key"> 
+    <swiper-item>
+      <image src="{{item}}"/>
+    </swiper-item>
+  </block>
+</swiper> -->
+    <!-- <swiper class="swiper" indicator-dots="true" autoplay="{{flag}}" interval="5000" duration="1000">
+      <block wx:for="{{imgUrls}}" wx:key wx:for-index="index">
+        <swiper-item>
+          <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+        </swiper-item>
+      </block>
+      <swiper-item>
+        <video id="myVideo" src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400'
+          bindtap="bofang" controls='true'></video>
+      </swiper-item>
+    </swiper> -->
+    <view class='banner-wrapper'>
+      <swiper indicator-dots indicator-color="{{indicator}}" current="{{current}}" indicator-active-color="{{activeIndicator}}" class="bn-swiper" bindchange="bannerChage" duration="300">
+        <block wx:for="{{storeImgs}}" wx:key="bn_urls">
+          <swiper-item>
+            <block wx:if="{{item.type == 1}}">
+              <view wx:if="{{isPlay}}" class='video-wrapper'>
+                <video src="{{item.src}}" class='video' controls id='myVideo'></video>
+              </view>
+              <view wx:else class='video-host-wrapper' catchtap='play'>
+                <image src="{{storeImgs[1].src}}" mode='aspectFill' />
+                <image src='/images/play.png' class='play-icon'></image>
+              </view>
+            </block>
+            <image src="{{item.src}}" mode='aspectFill' catchtap='preview' data-url="{{item.src}}" wx:else/>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class='banner-mask' wx:if="{{isPlay}}">
+        <image src='/images/arrow.png' class='prev' catchtap='goPrev'></image>
+        <image src='/images/arrow.png' class='next' catchtap='goNext'></image>
+      </view>
+    </view>
+      <!-- banner end-->
+    </view>
+    <view class="category-panel">
+      <view class="category-item">
+        <image class="category-item-image" src="../../icon/home.png" />
+        <text class="category-item-text">分类</text>
+      </view>
+      <view class="category-item">
+        <image class="category-item-image" src="../../icon/home.png" />
+        <text class="category-item-text">优选</text>
+      </view>
+      <view class="category-item">
+        <image class="category-item-image" src="../../icon/home.png" />
+        <text class="category-item-text">晒单</text>
+      </view>
+      <view class="category-item">
+        <image class="category-item-image" src="../../icon/home.png" />
+        <text class="category-item-text">常见问题</text>
+      </view>
+    </view>
+    <view>
+      <!--实时热销榜 start-->
+      <view class="hots-container">
+        <view class="category-title">
+          <text class="title">抢购商品</text>
+          <view class="line_name">
+            <text>每15分钟更新一次</text>
+            <text>查看全部 ></text>
+          </view>
+        </view>
+        <scroll-view scroll-x="true">
+          <view class="goods">
+            <block wx:for-items="{{goodsHotItems}}" wx:key="name">
+              <view class="goods-item" catchtap="catchTapCategory" data-type="{{item.name}}" data-typeid="{{item.typeId}}">
+                <image src="{{item.imageurl}}" class="goods-image" />
+                <text>{{item.name}}</text>
+                <p>￥{{item.newprice}}</p>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+      <!--实时热销榜 end-->
+    </view>
+    <view class="">
+      <!--福利专场 start-->
+      <view class="welfare-container">
+        <view class="category-title">
+          <text class="title">福利专场</text>
+          <view class="line_name">
+            <text>每天早10晚8准时上新</text>
+          </view>
+        </view>
+        <scroll-view scroll-y="true">
+          <view class="welfares">
+            <block wx:for-items="{{goodsWelfareItems}}" wx:key="name">
+              <view class="welfares-good" catchtap="catchTapCategory" data-type="{{item.name}}" data-typeid="{{item.typeId}}">
+                <view>
+                  <image src="{{item.imageurl}}" class="welfares-image" mode="widthFix" />
+                </view>
+                <view class="product-name">
+                  {{item.name}}
+                </view>
+                <view class="product-price-wrap">
+                  <p class="product-price-new">￥{{item.newprice}}</p>
+                  <p class="product-price-old">￥{{item.oldprice}}</p>
+                  <p class="discount">{{item.discount}}折</p>
+                </view>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+      <!--福利专场 end-->
+    </view>
+    <!-- <view>
+    <view class='tab-bar'>
+      <image src="../../images/bottomNav/mine_select.png" />
+      <p></p>
+      <image src="../../images/bottomNav/cart_select.png" />
+    </view>
+  </view> -->
+  </view>

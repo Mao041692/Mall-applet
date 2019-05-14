@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<view class="">
+  <view>
+    <view>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
+        duration="{{duration}}">
+        <block wx:for="{{imgUrls}}" wx:key=''>
+          <swiper-item>
+            <image src="{{item}}" data-src="{{item}}" bindtap="previewImage" mode="widthFix"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view>
+      <!--图文详情按钮-->
+      <view class='tab-bar-detail'>
+        <text>图文</text>
+        <text>详情</text>
+      </view>
+      <view class="product-price-wrap">
+        <view>
+          <p class="product-price-new">￥7935.84</p>
+          <p class="product-price-old">原价￥9018.00</p>
+          <p class="discount">8.8折</p>
+        </view>
+        <view>
+          <!-- <image src="../../images/bottomNav/share.png" /> -->
+        </view>
+      </view>
+      <view class="product-name-wrap">
+        <text>Apple iPhone X手机 苹果x 全网通4G 全面屏手机 银色 官方标配 256G</text>
+      </view>
+    </view>
+  </view>
+  <view class="">
+    <view class="details">
+      <scroll-view scroll-y="true">
+        <block wx:for-items="{{detailImg}}" wx:key="name">
+          <image class="image_detail" src="{{item}}" mode="widthFix" />
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>
